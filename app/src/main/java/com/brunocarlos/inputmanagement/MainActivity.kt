@@ -1,5 +1,6 @@
 package com.brunocarlos.inputmanagement
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -28,9 +29,11 @@ class MainActivity : AppCompatActivity() {
 
         val email = findViewById<EditText>(R.id.email_login_input).text
         if (email.equals("restaurant@gasparin.com")) {
-
+            val intent = Intent(this, RestaurantView::class.java)
+            startActivity(intent)
         } else if (email.equals("seller@gasparin.com")) {
-
+            val intent = Intent(this, SellerView::class.java)
+            startActivity(intent)
         } else {
             Toast.makeText(
                 this,
