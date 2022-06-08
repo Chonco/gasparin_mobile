@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ongoingOffersFragment"
+        android:icon="@drawable/ongoing_nav_item_icon"
+        android:title="Ongoing Offers" />
+    <item
+        android:id="@+id/availableOffersFragment"
+        android:icon="@drawable/available_nav_item_icon"
+        android:title="Available Offers" />
+</menu>

@@ -4,4 +4,7 @@
     <string name="login_email_placeholder">Email</string>
     <string name="login_password_placeholder">Password</string>
     <string name="login_button_text">Login</string>
+
+    <string name="available_offers_title">Available Offers</string>
+    <string name="ongoing_offers_title">Ongoing Offers</string>
 </resources>
