@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sellerOngoingOffersFragment"
+        android:icon="@drawable/ongoing_nav_item_icon"
+        android:title="@string/ongoing_offers_title" />
+    <item
+        android:id="@+id/sellerOfferedOffersFragment"
+        android:icon="@drawable/available_nav_item_icon"
+        android:title="@string/offered_offers_title" />
+    <item
+        android:id="@+id/restaurantListFragment"
+        android:icon="@drawable/restaurant_nav_item_icon"
+        android:title="@string/restaurant_list_title" />
+</menu>
