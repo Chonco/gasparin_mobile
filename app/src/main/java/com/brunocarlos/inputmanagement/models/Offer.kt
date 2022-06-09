@@ -5,7 +5,7 @@ data class Offer (
     val name: String,
     val price: Double,
     val sellerName: String,
-    val foodType: List<String>,
+    val foodType: String,
     val productDescription: String,
     val productImg: Int
 )
