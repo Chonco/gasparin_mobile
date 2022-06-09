@@ -1,5 +1,6 @@
 package com.brunocarlos.inputmanagement
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -16,8 +17,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onLoginButton() {
-        val password = findViewById<EditText>(R.id.password_login_input).text
-        if (!password.equals("gasparin")) {
+        val password = findViewById<EditText>(R.id.password_login_input).text.toString()
+
+        if (password != "gasparin") {
             Toast.makeText(
                 this,
                 "Invalid Credentials!",
@@ -26,17 +28,22 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val email = findViewById<EditText>(R.id.email_login_input).text
-        if (email.equals("restaurant@gasparin.com")) {
-
-        } else if (email.equals("seller@gasparin.com")) {
-
-        } else {
-            Toast.makeText(
-                this,
-                "Invalid Credentials!",
-                Toast.LENGTH_SHORT
-            ).show()
+        when (findViewById<EditText>(R.id.email_login_input).text.toString()) {
+            "restaurant@gasparin.com" -> {
+                val intent = Intent(this, RestaurantView::class.java)
+                startActivity(intent)
+            }
+            "seller@gasparin.com" -> {
+                val intent = Intent(this, SellerView::class.java)
+                startActivity(intent)
+            }
+            else -> {
+                Toast.makeText(
+                    this,
+                    "Invalid Credentials!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

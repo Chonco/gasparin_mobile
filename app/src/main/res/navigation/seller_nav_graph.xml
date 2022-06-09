@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seller_nav_graph"
+    app:startDestination="@id/restaurantListFragment">
+
+    <fragment
+        android:id="@+id/restaurantListFragment"
+        android:name="com.brunocarlos.inputmanagement.seller.RestaurantListFragment"
+        android:label="fragment_restaurant_list"
+        tools:layout="@layout/fragment_restaurant_list" />
+    <fragment
+        android:id="@+id/sellerOfferedOffersFragment"
+        android:name="com.brunocarlos.inputmanagement.seller.SellerOfferedOffersFragment"
+        android:label="fragment_seller_offered_offers"
+        tools:layout="@layout/fragment_seller_offered_offers" />
+    <fragment
+        android:id="@+id/sellerOngoingOffersFragment"
+        android:name="com.brunocarlos.inputmanagement.seller.SellerOngoingOffersFragment"
+        android:label="fragment_seller_ongoing_offers"
+        tools:layout="@layout/fragment_seller_ongoing_offers" />
+</navigation>
