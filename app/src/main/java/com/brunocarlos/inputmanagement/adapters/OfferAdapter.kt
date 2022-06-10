@@ -69,6 +69,7 @@ class OfferAdapter(offerList:List<Offer>,
                 val textView = TextView(activity)
                 textView.text = offerModel.foodType[i]
                 textView.layoutParams = layoutParams
+                textView.setBackgroundResource(R.drawable.pill_offer_bg)
                 offerTypeContainer.addView(textView)
             }
         }
