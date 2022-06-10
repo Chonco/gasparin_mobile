@@ -9,4 +9,7 @@
     <string name="ongoing_offers_title">Ongoing Offers</string>
     <string name="restaurant_list_title">Restaurant List</string>
     <string name="offered_offers_title">Offered Offers</string>
+
+    <string name="restaurant_list_ctxt_menu_details">Restaurant Details</string>
+    <string name="restaurant_list_ctxt_menu_offer">Make Offer</string>
 </resources>
