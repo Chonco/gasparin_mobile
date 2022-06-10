@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".restaurant.AvailableOffersFragment">
 
-    <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/available_offers_title" />
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerOffer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </FrameLayout>
