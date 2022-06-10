@@ -37,6 +37,8 @@ class RestaurantListAdapter(
             name = view.findViewById(R.id.restaurant_name)
             foodTypesContainer = view.findViewById(R.id.restaurant_food_types_container)
             address = view.findViewById(R.id.restaurant_address)
+
+            view.setOnCreateContextMenuListener(this)
         }
 
         fun bind(restaurant: User) {
@@ -47,7 +49,7 @@ class RestaurantListAdapter(
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
-            );
+            )
             layoutParams.marginEnd = 5
 
             for (i in 0 until restaurant.foodType.size) {
@@ -61,15 +63,15 @@ class RestaurantListAdapter(
         override fun onCreateContextMenu(
             contextMenu: ContextMenu,
             view: View,
-            menuInfo: ContextMenu.ContextMenuInfo
+            menuInfo: ContextMenu.ContextMenuInfo?
         ) {
-            val restaurantSelected = restaurants[this.adapterPosition]
+            val restaurantSelected = restaurants[this.absoluteAdapterPosition]
 
             contextMenu.setHeaderTitle(restaurantSelected.name)
             val inflater = activity.menuInflater
             inflater.inflate(R.menu.restaurant_list_context_menu, contextMenu)
 
-            for (i in 0..contextMenu.size()) {
+            for (i in 0 until contextMenu.size()) {
                 contextMenu.getItem(i).setOnMenuItemClickListener(this)
             }
         }
