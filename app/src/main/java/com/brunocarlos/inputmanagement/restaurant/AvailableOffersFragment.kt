@@ -9,14 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.adapters.OfferAdapter
-import com.brunocarlos.inputmanagement.adapters.OfferViewHolder
 import com.brunocarlos.inputmanagement.providers.OfferProvider
 
 
 class AvailableOffersFragment : Fragment() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
-    private var adapter: RecyclerView.Adapter<OfferViewHolder> ? = null
+    private var adapter: RecyclerView.Adapter<OfferAdapter.OfferViewHolder> ? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
