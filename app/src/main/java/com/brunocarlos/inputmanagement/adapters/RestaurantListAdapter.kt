@@ -1,6 +1,7 @@
 package com.brunocarlos.inputmanagement.adapters
 
 import android.app.Activity
+import android.content.Intent
 import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.User
+import com.brunocarlos.inputmanagement.shared.RestaurantDetails
 
 class RestaurantListAdapter(
     restaurants: List<User>,
@@ -44,7 +46,7 @@ class RestaurantListAdapter(
         fun bind(restaurant: User) {
             logo.setImageBitmap(restaurant.getLogoAsBitmap())
             name.text = restaurant.name
-            address.text = restaurant.address
+            address.text = restaurant.address.shortAddress
 
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -67,7 +69,6 @@ class RestaurantListAdapter(
             menuInfo: ContextMenu.ContextMenuInfo?
         ) {
             val restaurantSelected = restaurants[this.absoluteAdapterPosition]
-
             contextMenu.setHeaderTitle(restaurantSelected.name)
             val inflater = activity.menuInflater
             inflater.inflate(R.menu.restaurant_list_context_menu, contextMenu)
@@ -80,6 +81,9 @@ class RestaurantListAdapter(
         override fun onMenuItemClick(menuItem: MenuItem): Boolean {
             return when (menuItem.itemId) {
                 R.id.restaurant_details -> {
+                    val intent = Intent(activity, RestaurantDetails::class.java)
+                    intent.putExtra("restaurant", restaurants[this.absoluteAdapterPosition])
+                    activity.startActivity(intent)
                     true
                 }
                 R.id.restaurant_make_offer -> {

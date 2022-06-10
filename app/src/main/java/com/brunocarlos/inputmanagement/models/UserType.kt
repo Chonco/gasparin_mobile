@@ -1,5 +1,7 @@
 package com.brunocarlos.inputmanagement.models
 
-enum class UserType {
+import java.io.Serializable
+
+enum class UserType : Serializable {
     RESTAURANT, SELLER
 }
