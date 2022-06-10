@@ -56,6 +56,7 @@ class RestaurantListAdapter(
                 val textView = TextView(activity)
                 textView.text = restaurant.foodType[i]
                 textView.layoutParams = layoutParams
+                textView.setBackgroundResource(R.drawable.pill_bg)
                 foodTypesContainer.addView(textView)
             }
         }
