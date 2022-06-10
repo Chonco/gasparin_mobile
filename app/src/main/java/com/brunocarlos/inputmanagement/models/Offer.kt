@@ -1,11 +1,21 @@
 package com.brunocarlos.inputmanagement.models
 
-data class Offer (
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
+import android.util.Base64
+
+class Offer (
     val id: Int,
     val name: String,
     val price: Double,
     val sellerName: String,
-    val foodType: String,
+    val foodType: List<String>,
     val productDescription: String,
-    val productImg: Int
-)
+    val productImg: String
+){
+     fun getLogoAsBitmap(): Bitmap {
+         val imageBytes = Base64.decode(productImg, Base64.DEFAULT)
+         return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+     }
+ }

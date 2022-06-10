@@ -18,7 +18,6 @@ class OfferAdapter(private val offerList:List<Offer>): RecyclerView.Adapter<Offe
         holder.render(item)
     }
 
-    override fun getItemCount(): Int {
-        return offerList.size
-    }
+    override fun getItemCount(): Int = offerList.size
+
 }

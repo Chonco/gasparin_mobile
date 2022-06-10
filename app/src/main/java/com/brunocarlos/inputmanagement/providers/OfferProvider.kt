@@ -11,9 +11,9 @@ class OfferProvider {
             "cherry",
             32.99,
             "GasparinFarms",
-            "Fruits",
+            listOf<String>("Fruit", "Fresh"),
             "Big Red Cherry",
-            R.drawable.cherry_bg)
+            "asdasdasd")
         )
     }
 }
