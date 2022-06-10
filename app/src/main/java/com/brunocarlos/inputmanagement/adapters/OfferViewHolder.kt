@@ -17,6 +17,7 @@ class OfferViewHolder (view : View): RecyclerView.ViewHolder(view){
     private val offerImg = view.findViewById<ImageView>(R.id.imgOffer)
 
     fun render(offerModel : Offer){
+        offerImg.setImageBitmap(offerModel.getLogoAsBitmap())
         offerName.text = offerModel.name
         producerName.text = offerModel.sellerName
         try {
@@ -26,6 +27,6 @@ class OfferViewHolder (view : View): RecyclerView.ViewHolder(view){
             val decimalFormat = DecimalFormat("$ #,###.00", symbols)
             offerPrice.text = decimalFormat.format(offerModel.price)
         }catch (e:Exception){}
-        offerImg.setImageBitmap(offerModel.getLogoAsBitmap())
+
     }
 }
