@@ -16,12 +16,12 @@ class RestaurantListAdapter(
 ) : RecyclerView.Adapter<RestaurantListAdapter.ViewHolder>() {
 
     private val restaurants: List<User>
-    private val layout: Int
+    private val itemCardLayout: Int
     private val activity: Activity
 
     init {
         this.restaurants = restaurants
-        this.layout = layout
+        this.itemCardLayout = layout
         this.activity = activity
     }
 
@@ -50,7 +50,7 @@ class RestaurantListAdapter(
             );
             layoutParams.marginEnd = 5
 
-            for (i in 0..restaurant.foodType.size) {
+            for (i in 0 until restaurant.foodType.size) {
                 val textView = TextView(activity)
                 textView.text = restaurant.foodType[i]
                 textView.layoutParams = layoutParams
@@ -88,7 +88,7 @@ class RestaurantListAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(activity).inflate(layout, parent, false)
+        val view = LayoutInflater.from(activity).inflate(itemCardLayout, parent, false)
         return ViewHolder(view)
     }
 
