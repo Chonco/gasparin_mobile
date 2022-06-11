@@ -6,7 +6,7 @@ import com.brunocarlos.inputmanagement.models.UserType
 
 class RestaurantsProvider {
     companion object {
-        val restaurantsList = listOf(
+        private val restaurantsList = mutableListOf(
             User(
                 1,
                 "Sandy's",
@@ -47,5 +47,31 @@ class RestaurantsProvider {
                 listOf("Family", "General")
             )
         )
+
+        fun addRestaurant(restaurant: User): User {
+            restaurant.id = restaurantsList.size
+            restaurantsList.add(restaurant)
+            return restaurant
+        }
+
+        fun getAllRestaurants() = restaurantsList
+
+        fun getRestaurantById(id: Int): User = restaurantsList.filter { value -> value.id == id }[0]
+
+        fun updateRestaurant(id: Int, input: User) {
+            val restaurant = getRestaurantById(id)
+
+            restaurant.address = input.address
+            restaurant.name = input.name
+            restaurant.logoImg = input.logoImg
+            restaurant.foodType = input.foodType
+            restaurant.email = input.email
+            restaurant.phone = input.phone
+        }
+
+        fun deleteRestaurantById(id: Int) {
+            val restaurant = getRestaurantById(id)
+            restaurantsList.remove(restaurant)
+        }
     }
 }

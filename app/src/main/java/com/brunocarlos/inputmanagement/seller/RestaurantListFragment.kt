@@ -12,9 +12,6 @@ import com.brunocarlos.inputmanagement.adapters.RestaurantListAdapter
 import com.brunocarlos.inputmanagement.providers.RestaurantsProvider
 
 class RestaurantListFragment : Fragment() {
-    private var layoutManager: RecyclerView.LayoutManager? = null
-    private var adapter: RecyclerView.Adapter<RestaurantListAdapter.ViewHolder>? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,7 +24,7 @@ class RestaurantListFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.restaurant_list_recycler_view)
         val customAdapter = RestaurantListAdapter(
-            RestaurantsProvider.restaurantsList,
+            RestaurantsProvider.getAllRestaurants(),
             R.layout.restaurant_list_item_view,
             this.requireActivity()
         )

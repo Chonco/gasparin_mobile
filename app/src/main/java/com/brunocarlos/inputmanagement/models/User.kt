@@ -6,14 +6,14 @@ import android.util.Base64
 import java.io.Serializable
 
 class User(
-    val id: Int,
-    val name: String,
-    val address: Address,
-    val logoImg: String,
-    val email: String,
-    val phone: String,
+    var id: Int,
+    var name: String,
+    var address: Address,
+    var logoImg: String,
+    var email: String,
+    var phone: String,
     val userType: UserType,
-    val foodType: List<String>
+    var foodType: List<String>
 ) : Serializable {
     fun getLogoAsBitmap(): Bitmap {
         val imageBytes = Base64.decode(logoImg, Base64.DEFAULT)
