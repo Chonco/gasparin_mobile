@@ -1,5 +1,6 @@
 package com.brunocarlos.inputmanagement.shared
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,12 +11,13 @@ import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.User
 
 class RestaurantDetails : AppCompatActivity() {
+    lateinit var restaurant: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_details)
 
-        val restaurant = intent.getSerializableExtra("restaurant") as User
+        restaurant = intent.getSerializableExtra("restaurant") as User
 
         val logoContainer = findViewById<ImageView>(R.id.restaurant_details_logo)
         logoContainer.setImageBitmap(restaurant.getLogoAsBitmap())
@@ -51,6 +53,8 @@ class RestaurantDetails : AppCompatActivity() {
     }
 
     private fun sendToAddOfferActivity() {
-
+        val intent = Intent(this, MakeOffer::class.java)
+        intent.putExtra("restaurant", restaurant)
+        startActivity(intent)
     }
 }

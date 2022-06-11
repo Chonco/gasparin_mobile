@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.User
+import com.brunocarlos.inputmanagement.shared.MakeOffer
 import com.brunocarlos.inputmanagement.shared.RestaurantDetails
 
 class RestaurantListAdapter(
@@ -87,6 +88,9 @@ class RestaurantListAdapter(
                     true
                 }
                 R.id.restaurant_make_offer -> {
+                    val intent = Intent(activity, MakeOffer::class.java)
+                    intent.putExtra("restaurant", restaurants[this.absoluteAdapterPosition])
+                    activity.startActivity(intent)
                     true
                 }
                 else -> false
