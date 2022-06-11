@@ -1,15 +1,19 @@
 package com.brunocarlos.inputmanagement.restaurant
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.adapters.OfferAdapter
+import com.brunocarlos.inputmanagement.models.Offer
 import com.brunocarlos.inputmanagement.providers.OfferProvider
+import com.brunocarlos.inputmanagement.shared.OfferDetailView
 
 
 class AvailableOffersFragment : Fragment() {
@@ -38,6 +42,14 @@ class AvailableOffersFragment : Fragment() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = customAdapter
+//            customAdapter.setOnItemClickListener(object : OfferAdapter.onItemClickListener{
+//                override fun onItemClick(position: Int, offerList: List<Offer>) {
+//                    Toast.makeText(context, "Haz seleccionado: $position",Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(context, OfferDetailView::class.java)
+//                    startActivity(intent)
+//                }
+//
+//            })
         }
     }
 }

@@ -2,6 +2,7 @@ package com.brunocarlos.inputmanagement.providers
 
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
+import java.io.Serializable
 
 class OfferProvider {
     companion object{

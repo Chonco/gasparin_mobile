@@ -9,5 +9,6 @@
     <string name="ongoing_offers_title">Ongoing Offers</string>
     <string name="restaurant_list_title">Restaurant List</string>
     <string name="offered_offers_title">Offered Offers</string>
-    <string name= "offer_list_ctxt_menu_details">Offer Detail</string>
+    <string name="offer_list_ctxt_menu_accept_offer">Accept Offer</string>
+    <string name="offer_list_ctxt_menu_reject_offer">Reject Offer</string>
 </resources>

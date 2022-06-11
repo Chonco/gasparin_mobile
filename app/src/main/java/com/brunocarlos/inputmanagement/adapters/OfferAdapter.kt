@@ -1,6 +1,7 @@
 package com.brunocarlos.inputmanagement.adapters
 
 import android.app.Activity
+import android.content.Intent
 import android.view.*
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
-import com.brunocarlos.inputmanagement.providers.OfferProvider
+import com.brunocarlos.inputmanagement.shared.OfferDetailView
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
@@ -29,8 +30,14 @@ class OfferAdapter(offerList:List<Offer>,
         this.activity = activity
     }
 
+    interface onItemClickListener{
+        fun onItemClick(position: Int, offerList: List<Offer>)
+
+    }
+
+
     inner class OfferViewHolder (view : View): RecyclerView.ViewHolder(view),
-        View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener{
+        View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener, onItemClickListener{
 
         private val offerName : TextView
         private val producerName : TextView
@@ -45,6 +52,7 @@ class OfferAdapter(offerList:List<Offer>,
             offerImg = view.findViewById(R.id.imgOffer)
             offerTypeContainer = view.findViewById(R.id.offer_food_types_container)
             view.setOnCreateContextMenuListener(this)
+
         }
 
         fun render(offerModel : Offer){
@@ -72,6 +80,10 @@ class OfferAdapter(offerList:List<Offer>,
                 textView.setBackgroundResource(R.drawable.pill_offer_bg)
                 offerTypeContainer.addView(textView)
             }
+            itemView.setOnClickListener{
+                onItemClick(adapterPosition, offerList)
+            }
+
         }
 
         override fun onCreateContextMenu(
@@ -92,13 +104,19 @@ class OfferAdapter(offerList:List<Offer>,
 
         override fun onMenuItemClick(menuItem: MenuItem): Boolean {
             return when (menuItem.itemId){
-                R.id.offer_details -> {
+                R.id.accept_Offer -> {
                     true
                 }
                 else -> false
 
 
             }
+        }
+
+        override fun onItemClick(position: Int, offerList: List<Offer>) {
+            val intent = Intent(activity, OfferDetailView::class.java)
+            intent.putExtra("offer", offerList[this.adapterPosition])
+            activity.startActivity(intent)
         }
     }
 
