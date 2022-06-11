@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/drawable/restaurant_bottom_nav_colors.xml" value="0.1925" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/activity_main.xml" value="0.17135416666666667" />
+        <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/activity_restaurant_details.xml" value="0.3625" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/activity_restaurant_view.xml" value="0.18541666666666667" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/activity_seller_view.xml" value="0.22871376811594202" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/fragment_available_offers.xml" value="0.18541666666666667" />
@@ -12,8 +13,20 @@
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/fragment_restaurant_list.xml" value="0.3625" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/fragment_seller_offered_offers.xml" value="0.3625" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/fragment_seller_ongoing_offers.xml" value="0.3625" />
+        <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/layout/restaurant_list_item_view.xml" value="0.3614583333333333" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/menu/restaurant_bottom_nav_menu.xml" value="0.184375" />
+        <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/menu/restaurant_list_context_menu.xml" value="0.3614583333333333" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/menu/seller_bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/drawable/pill_offer_bg.xml" value="0.188" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/activity_offer_detail_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/activity_offer_detail_view_2.xml" value="0.1" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/activity_offer_details_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/fragment_available_offers.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/item_offer.xml" value="0.4369426751592357" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/item_context_menu.xml" value="0.203125" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/item_offer_context_menu.xml" value="0.1" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/restaurant_bottom_nav_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/seller_bottom_nav_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

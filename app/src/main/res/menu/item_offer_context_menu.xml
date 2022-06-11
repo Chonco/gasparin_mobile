@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <item
+       android:id="@+id/accept_Offer"
+       app:showAsAction="ifRoom"
+       android:title="@string/offer_list_ctxt_menu_accept_offer"/>
+
+   <item
+       android:id="@+id/reject_Offer"
+       app:showAsAction="ifRoom"
+       android:title="@string/offer_list_ctxt_menu_reject_offer"/>
+
+</menu>
