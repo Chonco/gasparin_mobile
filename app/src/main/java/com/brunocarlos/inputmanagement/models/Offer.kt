@@ -13,10 +13,11 @@ class Offer(
     val sellerName: String,
     var foodType: List<String>,
     var productDescription: String,
-    var productImg: String
-):Serializable{
+    var productImg: String,
+    var isAccepted: Boolean
+) : Serializable {
     fun getLogoAsBitmap(): Bitmap {
         val imageBytes = Base64.decode(productImg, Base64.DEFAULT)
         return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
     }
- }
+}
