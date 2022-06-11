@@ -42,14 +42,6 @@ class AvailableOffersFragment : Fragment() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = customAdapter
-//            customAdapter.setOnItemClickListener(object : OfferAdapter.onItemClickListener{
-//                override fun onItemClick(position: Int, offerList: List<Offer>) {
-//                    Toast.makeText(context, "Haz seleccionado: $position",Toast.LENGTH_SHORT).show()
-//                    val intent = Intent(context, OfferDetailView::class.java)
-//                    startActivity(intent)
-//                }
-//
-//            })
         }
     }
 }

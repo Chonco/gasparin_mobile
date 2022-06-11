@@ -11,4 +11,7 @@
     <string name="offered_offers_title">Offered Offers</string>
     <string name="offer_list_ctxt_menu_accept_offer">Accept Offer</string>
     <string name="offer_list_ctxt_menu_reject_offer">Reject Offer</string>
+    <string name="offer_details_description">Product Description</string>
+    <string name="offer_details_seller_banner">Seller:</string>
+    <string name="offer_details_characteristics_banner">Characteristics</string>
 </resources>
