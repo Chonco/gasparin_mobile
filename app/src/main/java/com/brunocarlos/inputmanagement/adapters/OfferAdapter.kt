@@ -70,99 +70,37 @@ class OfferAdapter(
             } catch (e: Exception) {
             }
 
-            //Creamos lista de LinearLayouts
-            val linearLayoutList: MutableList<LinearLayout> = mutableListOf()
-
-            val displayMetrics: DisplayMetrics = offerTypeContainer.resources.displayMetrics
-
-            val totalAvailableWidth =
-                (displayMetrics.widthPixels * 0.6).toInt()
+            //Creacion de LinearLayout
+            val linearLayout = LinearLayout(activity)
+            linearLayout.orientation = LinearLayout.HORIZONTAL
+            linearLayout.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            linearLayout.gravity = Gravity.END
 
             val size = offerModel.foodType.size
             var i = 0
 
-            //mientras i sea menor a size se crearan linearLayouts horizontales
-            while (i < size) {
-
-
-                //Creacion de LinearLayout
-                val linearLayout = LinearLayout(activity)
-                linearLayout.orientation = LinearLayout.HORIZONTAL
-                linearLayout.layoutParams = LinearLayout.LayoutParams(
+            while (i < size && i < 2) {
+                //Asignamos el foodtype textview al linearLayout
+                val textView = TextView(activity)
+                val layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 )
-                linearLayout.gravity = Gravity.END
-
-                while (true) {
-                    //Asignamos el foodtype textview al linearLayout
-                    val textView = TextView(activity)
-                    val layoutParams = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    layoutParams.marginEnd = 5
-                    textView.maxLines = 1
-                    textView.text = offerModel.foodType[i]
-                    textView.layoutParams = layoutParams
-
-                    textView.setBackgroundResource(R.drawable.pill_offer_bg)
-                    linearLayout.addView(textView)
-
-                    linearLayout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
-                    val occupiedWidth = linearLayout.measuredWidth
-
-                    //si el ancho excede al total disponible entonces se remueve el ultimo foodtype añadido y se mantiene
-                    //en el linear layout actual a ser añadido al linearlayout principal
-                    if (occupiedWidth > totalAvailableWidth) {
-
-                        //Si un foodtype excede el limite maximo entonces incrementamos el contador i entonces
-                        //removemos el ultimo foodtype añadido
-                        if (linearLayout.childCount == 1) {
-                            i++
-
-                            //Si no, no incrementa el contador i ya que queremos que el ultimo foodtype sea incluido en
-                            //la siguiente iteracion
-                        } else {
-                            linearLayout.removeView(textView)
-                        }
-                        linearLayoutList.add(linearLayout)
-                        break
-
-                    } else {
-                        //si el item es el ultimo en la lista entonces retiene el layout ya que el bucle
-                        //se romperá despues de esto
-                        if (i == (size - 1)) {
-                            linearLayoutList.add(linearLayout)
-                        }
-                        //Incrementamos el contador para movernos al siguiente item
-                        i++
-                    }
-
-                    if (i >= size) {
-                        break
-                    }
-                }
-            }
-
-            for (l in linearLayoutList) {
-                offerTypeContainer.addView(l)
-            }
-
-            /*
-            val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            layoutParams.marginEnd = 5
-
-            for (i in 0 until offerModel.foodType.size){
-                val textView = TextView(activity)
+                layoutParams.marginEnd = 5
+                textView.maxLines = 1
                 textView.text = offerModel.foodType[i]
                 textView.layoutParams = layoutParams
+
                 textView.setBackgroundResource(R.drawable.pill_offer_bg)
-                offerTypeContainer.addView(textView)
-            }*/
+                linearLayout.addView(textView)
+                i++
+            }
+
+            offerTypeContainer.addView(linearLayout)
+
             itemView.setOnClickListener {
                 onItemClick(absoluteAdapterPosition, offerList)
             }

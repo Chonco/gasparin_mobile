@@ -57,6 +57,7 @@ class OfferDetailView : AppCompatActivity() {
         for (i in foodTypes.indices) {
             val textView = TextView(this)
             textView.text = foodTypes[i]
+            textView.maxLines = 1
             textView.layoutParams = layoutParams
             textView.setBackgroundResource(R.drawable.pill_offer_bg)
             foodTypesContainer.addView(textView)
