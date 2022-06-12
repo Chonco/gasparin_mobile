@@ -26,7 +26,7 @@ class AvailableOffersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.avilable_offers_recycler_view)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.available_offers_recycler_view)
         val customAdapter = OfferAdapter(
             OfferProvider.getAllOffers(),
             R.layout.item_offer,
