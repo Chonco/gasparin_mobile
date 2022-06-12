@@ -18,7 +18,7 @@ class RestaurantsProvider {
                 "contact@sandys.com",
                 "33 3165 5392",
                 UserType.RESTAURANT,
-                listOf("Family", "General")
+                listOf("Family", "General", "Departamental", "Big Store", "Formal")
             ),
             User(
                 2,
