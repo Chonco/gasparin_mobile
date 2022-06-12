@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".shared.MakeOffer">
+
+    <ImageView
+        android:id="@+id/new_offer_image"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/default_new_offer_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/new_offer_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_offer_title_hint"
+        android:textSize="32sp"
+        app:layout_constraintTop_toBottomOf="@id/new_offer_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <GridLayout
+        android:id="@+id/food_types_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/new_offer_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:rowCount="3"
+        android:columnCount="3" >
+
+        <CheckBox
+            android:id="@+id/fruits"
+            android:text="Fruits" />
+        <CheckBox
+            android:id="@+id/vegetables"
+            android:text="Vegetables" />
+        <CheckBox
+            android:id="@+id/fresh"
+            android:text="Fresh" />
+        <CheckBox
+            android:id="@+id/sausages"
+            android:text="Sausages" />
+        <CheckBox
+            android:id="@+id/red_meat"
+            android:text="Red Meat" />
+        <CheckBox
+            android:id="@+id/white_meat"
+            android:text="White Meat" />
+        <CheckBox
+            android:id="@+id/natural"
+            android:text="Natural" />
+        <CheckBox
+            android:id="@+id/transgenic"
+            android:text="Transgenic" />
+        <CheckBox
+            android:id="@+id/other"
+            android:text="Other" />
+
+    </GridLayout>
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_offer_price_hint"
+        app:layout_constraintTop_toBottomOf="@id/food_types_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="32dp"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_offer_description_hint"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="32dp" />
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restaurant_list_ctxt_menu_offer"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
