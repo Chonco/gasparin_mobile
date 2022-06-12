@@ -83,11 +83,11 @@ class OfferDetailView : AppCompatActivity() {
     private fun acceptOffer() {
         offer.isAccepted = true
         OfferProvider.updateOffer(offer.id, offer)
-        finishActivity(1)
+        finish()
     }
 
     private fun rejectOffer() {
         OfferProvider.deleteOfferById(offer.id)
-        finishActivity(0)
+        finish()
     }
 }
