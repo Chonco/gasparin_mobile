@@ -11,17 +11,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
+import com.brunocarlos.inputmanagement.providers.OfferProvider
 import com.brunocarlos.inputmanagement.shared.OfferDetailView
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
 class OfferAdapter(
-    offerList: List<Offer>,
+    offerList: MutableList<Offer>,
     layout: Int,
     activity: Activity
 ) : RecyclerView.Adapter<OfferAdapter.OfferViewHolder>() {
 
-    private val offerList: List<Offer>
+    private val offerList: MutableList<Offer>
     private val itemCardLayout: Int
     private val activity: Activity
 
@@ -32,7 +33,7 @@ class OfferAdapter(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, offerList: List<Offer>)
+        fun onItemClick(position: Int)
     }
 
     inner class OfferViewHolder(view: View) : RecyclerView.ViewHolder(view),
@@ -51,7 +52,6 @@ class OfferAdapter(
             offerImg = view.findViewById(R.id.imgOffer)
             offerTypeContainer = view.findViewById(R.id.offer_food_types_container)
             view.setOnCreateContextMenuListener(this)
-
         }
 
         fun render(offerModel: Offer) {
@@ -82,7 +82,7 @@ class OfferAdapter(
                 offerTypeContainer.addView(textView)
             }
             itemView.setOnClickListener {
-                onItemClick(absoluteAdapterPosition, offerList)
+                onItemClick(absoluteAdapterPosition)
             }
 
         }
@@ -104,15 +104,26 @@ class OfferAdapter(
         }
 
         override fun onMenuItemClick(menuItem: MenuItem): Boolean {
+            val currentOffer = offerList[absoluteAdapterPosition]
             return when (menuItem.itemId) {
                 R.id.accept_Offer -> {
+                    currentOffer.isAccepted = true
+                    OfferProvider.updateOffer(currentOffer.id, currentOffer)
+                    offerList.remove(currentOffer)
+                    notifyItemRemoved(absoluteAdapterPosition)
+                    true
+                }
+                R.id.reject_Offer -> {
+                    OfferProvider.deleteOfferById(currentOffer.id)
+                    offerList.remove(currentOffer)
+                    notifyItemRemoved(absoluteAdapterPosition)
                     true
                 }
                 else -> false
             }
         }
 
-        override fun onItemClick(position: Int, offerList: List<Offer>) {
+        override fun onItemClick(position: Int) {
             val intent = Intent(activity, OfferDetailView::class.java)
             intent.putExtra("offer", offerList[absoluteAdapterPosition])
             activity.startActivity(intent)

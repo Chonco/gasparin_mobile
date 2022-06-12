@@ -36,7 +36,7 @@ class OfferProvider {
 
         fun getAllOffers(): List<Offer> = offerList
 
-        fun getOfferById(id: Int): Offer = offerList.filter { value -> value.id == id }[0]
+        fun getOfferById(id: Int): Offer = offerList.first { value -> value.id == id }
 
         fun getAcceptedOffers(): List<Offer> = offerList.filter { value -> value.isAccepted }
 
