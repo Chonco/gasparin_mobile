@@ -56,8 +56,9 @@ class OfferAdapter(
             offerImg = view.findViewById(R.id.imgOffer)
             offerTypeContainer = view.findViewById(R.id.offer_food_types_container)
 
-            if (!offersAccepted)
+            if (!offersAccepted) {
                 view.setOnCreateContextMenuListener(this)
+            }
         }
 
         fun render(offerModel: Offer) {
@@ -102,7 +103,11 @@ class OfferAdapter(
 
             contextMenu.setHeaderTitle(offerSelected.name)
             val inflater = activity.menuInflater
-            inflater.inflate(R.menu.item_offer_context_menu, contextMenu)
+
+            if (userType == UserType.RESTAURANT)
+                inflater.inflate(R.menu.item_offer_context_menu, contextMenu)
+            else
+                inflater.inflate(R.menu.seller_offers_list_context_menu, contextMenu)
 
             for (i in 0 until contextMenu.size()) {
                 contextMenu.getItem(i).setOnMenuItemClickListener(this)
@@ -120,6 +125,12 @@ class OfferAdapter(
                     true
                 }
                 R.id.reject_Offer -> {
+                    OfferProvider.deleteOfferById(currentOffer.id)
+                    offerList.remove(currentOffer)
+                    notifyItemRemoved(absoluteAdapterPosition)
+                    true
+                }
+                R.id.cancel_offer -> {
                     OfferProvider.deleteOfferById(currentOffer.id)
                     offerList.remove(currentOffer)
                     notifyItemRemoved(absoluteAdapterPosition)
