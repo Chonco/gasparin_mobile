@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.adapters.OfferAdapter
 import com.brunocarlos.inputmanagement.models.Offer
+import com.brunocarlos.inputmanagement.models.UserType
 import com.brunocarlos.inputmanagement.providers.OfferProvider
+import com.brunocarlos.inputmanagement.util.OfferAdapterParams
 
 class OngoingOffersFragment : Fragment() {
 
@@ -27,10 +29,16 @@ class OngoingOffersFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.ongoing_offers_recycler_view)
         val customAdapter = OfferAdapter(
-            OfferProvider.getAcceptedOffers() as MutableList<Offer>,
-            R.layout.item_offer,
-            this.requireActivity()
+            OfferAdapterParams(
+                OfferProvider.getAcceptedOffers() as MutableList<Offer>,
+                R.layout.item_offer,
+                this.requireActivity(),
+                true,
+                UserType.RESTAURANT
+            )
         )
+
+
         recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = customAdapter

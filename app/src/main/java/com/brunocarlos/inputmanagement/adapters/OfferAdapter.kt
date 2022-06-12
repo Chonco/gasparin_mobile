@@ -11,25 +11,29 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
+import com.brunocarlos.inputmanagement.models.UserType
 import com.brunocarlos.inputmanagement.providers.OfferProvider
 import com.brunocarlos.inputmanagement.shared.OfferDetailView
+import com.brunocarlos.inputmanagement.util.OfferAdapterParams
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
 class OfferAdapter(
-    offerList: MutableList<Offer>,
-    layout: Int,
-    activity: Activity
+    params: OfferAdapterParams
 ) : RecyclerView.Adapter<OfferAdapter.OfferViewHolder>() {
 
     private val offerList: MutableList<Offer>
     private val itemCardLayout: Int
     private val activity: Activity
+    private val userType: UserType
+    private val offersAccepted: Boolean
 
     init {
-        this.offerList = offerList
-        this.itemCardLayout = layout
-        this.activity = activity
+        this.offerList = params.offerList
+        this.itemCardLayout = params.layout
+        this.activity = params.activity
+        this.userType = params.userType
+        this.offersAccepted = params.offersAccepted
     }
 
     interface OnItemClickListener {
@@ -51,7 +55,9 @@ class OfferAdapter(
             offerPrice = view.findViewById(R.id.offerPrice)
             offerImg = view.findViewById(R.id.imgOffer)
             offerTypeContainer = view.findViewById(R.id.offer_food_types_container)
-            view.setOnCreateContextMenuListener(this)
+
+            if (!offersAccepted)
+                view.setOnCreateContextMenuListener(this)
         }
 
         fun render(offerModel: Offer) {
