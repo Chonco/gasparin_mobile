@@ -6,7 +6,7 @@
     tools:context=".restaurant.AvailableOffersFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/avilable_offers_recycler_view"
+        android:id="@+id/available_offers_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
