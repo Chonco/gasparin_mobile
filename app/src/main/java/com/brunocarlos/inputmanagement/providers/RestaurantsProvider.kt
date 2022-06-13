@@ -56,7 +56,7 @@ class RestaurantsProvider {
 
         fun getAllRestaurants() = restaurantsList
 
-        fun getRestaurantById(id: Int): User = restaurantsList.filter { value -> value.id == id }[0]
+        fun getRestaurantById(id: Int): User = restaurantsList.first { value -> value.id == id }
 
         fun updateRestaurant(id: Int, input: User) {
             val restaurant = getRestaurantById(id)

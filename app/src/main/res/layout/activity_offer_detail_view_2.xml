@@ -44,34 +44,4 @@
         app:layout_constraintTop_toBottomOf="@+id/offer_details_description_banner"
         tools:text="Big Red Cherry" />
 
-    <LinearLayout
-        android:id="@+id/offer_details_buttons_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        android:padding="16dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/offer_details_description">
-
-        <Button
-            android:id="@+id/offer_details_accept_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Accept"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"/>
-
-        <Button
-            android:id="@+id/offer_details_reject_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reject"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            tools:layout_editor_absoluteY="222dp" />
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
