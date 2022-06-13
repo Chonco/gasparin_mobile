@@ -49,19 +49,8 @@ class RestaurantListAdapter(
             name.text = restaurant.name
             address.text = restaurant.address.shortAddress
 
-            val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            layoutParams.marginEnd = 5
+            drawFoodTypes(restaurant.foodType, foodTypesContainer)
 
-            for (i in 0 until restaurant.foodType.size) {
-                val textView = TextView(activity)
-                textView.text = restaurant.foodType[i]
-                textView.layoutParams = layoutParams
-                textView.setBackgroundResource(R.drawable.pill_bg)
-                foodTypesContainer.addView(textView)
-            }
         }
 
         override fun onCreateContextMenu(
@@ -96,6 +85,40 @@ class RestaurantListAdapter(
                 else -> false
             }
         }
+    }
+
+    private fun drawFoodTypes(foodTypes: List<String>, foodTypesContainer: LinearLayout) {
+
+        //Creacion de LinearLayout
+        val linearLayout = LinearLayout(activity)
+        linearLayout.orientation = LinearLayout.HORIZONTAL
+        linearLayout.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        linearLayout.gravity = Gravity.END
+
+        val size = foodTypes.size
+        var i = 0
+
+        while (i < size && i < 2) {
+            //Asignamos el foodtype textview al linearLayout
+            val textView = TextView(activity)
+            val layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            layoutParams.marginEnd = 5
+            textView.maxLines = 1
+            textView.text = foodTypes[i]
+            textView.layoutParams = layoutParams
+
+            textView.setBackgroundResource(R.drawable.pill_bg)
+            linearLayout.addView(textView)
+            i++
+        }
+
+        foodTypesContainer.addView(linearLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

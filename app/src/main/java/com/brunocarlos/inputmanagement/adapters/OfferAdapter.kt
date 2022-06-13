@@ -3,8 +3,6 @@ package com.brunocarlos.inputmanagement.adapters
 import android.app.Activity
 import android.content.Intent
 import android.view.*
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -74,24 +72,11 @@ class OfferAdapter(
             } catch (e: Exception) {
             }
 
-            val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+            drawFoodTypes(offerModel.foodType, offerTypeContainer)
 
-            layoutParams.marginEnd = 5
-
-            for (i in 0 until offerModel.foodType.size) {
-                val textView = TextView(activity)
-                textView.text = offerModel.foodType[i]
-                textView.layoutParams = layoutParams
-                textView.setBackgroundResource(R.drawable.pill_offer_bg)
-                offerTypeContainer.addView(textView)
-            }
             itemView.setOnClickListener {
                 onItemClick(absoluteAdapterPosition)
             }
-
         }
 
         override fun onCreateContextMenu(
@@ -146,6 +131,41 @@ class OfferAdapter(
             activity.startActivity(intent)
         }
     }
+
+    private fun drawFoodTypes(foodTypes: List<String>, foodTypesContainer: LinearLayout) {
+        //Creacion de LinearLayout
+        val linearLayout = LinearLayout(activity)
+        linearLayout.orientation = LinearLayout.HORIZONTAL
+        linearLayout.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        linearLayout.gravity = Gravity.END
+
+        val size = foodTypes.size
+        var i = 0
+
+        while (i < size && i < 2) {
+            //Asignamos el foodtype textview al linearLayout
+            val textView = TextView(activity)
+            val layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            layoutParams.marginEnd = 5
+            textView.maxLines = 1
+            textView.text = foodTypes[i]
+            textView.layoutParams = layoutParams
+
+            textView.setBackgroundResource(R.drawable.pill_offer_bg)
+            linearLayout.addView(textView)
+            i++
+        }
+
+
+        foodTypesContainer.addView(linearLayout)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OfferViewHolder {
         val layoutInflater = LayoutInflater.from(activity).inflate(itemCardLayout, parent, false)

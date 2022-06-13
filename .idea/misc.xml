@@ -22,6 +22,19 @@
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/menu/restaurant_bottom_nav_menu.xml" value="0.184375" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/menu/restaurant_list_context_menu.xml" value="0.3614583333333333" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/menu/seller_bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/drawable-v24/pill_offer_bg.xml" value="0.196" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/drawable/pill_offer_bg.xml" value="0.188" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/activity_offer_detail_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/activity_offer_detail_view_2.xml" value="0.25" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/activity_offer_details_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/activity_restaurant_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/fragment_available_offers.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/item_offer.xml" value="0.5" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/layout/restaurant_list_item_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/item_context_menu.xml" value="0.203125" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/item_offer_context_menu.xml" value="0.1" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/restaurant_bottom_nav_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/kusag/Desktop/gasparin_mobile/app/src/main/res/menu/seller_bottom_nav_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/CodingProjects/gasparin-mobile/app/src/main/res/menu/seller_offers_list_context_menu.xml" value="0.3614583333333333" />
       </map>
     </option>
