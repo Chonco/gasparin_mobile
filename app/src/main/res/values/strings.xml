@@ -27,4 +27,7 @@
     <string name="offer_details_description">Product Description</string>
     <string name="offer_details_seller_banner">Seller:</string>
     <string name="offer_details_characteristics_banner">Characteristics</string>
+
+    <string name="get_picture_camera_option">Camera</string>
+    <string name="get_picture_gallery_option">Gallery</string>
 </resources>
