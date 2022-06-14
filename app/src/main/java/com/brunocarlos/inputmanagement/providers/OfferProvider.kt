@@ -6,6 +6,7 @@ import java.io.Serializable
 
 class OfferProvider {
     companion object {
+        private var currentId = 3
         private val offerList = mutableListOf(
             Offer(
                 1,
@@ -29,8 +30,9 @@ class OfferProvider {
         )
 
         fun addOffer(offer: Offer): Offer {
-            offer.id = offerList.size
+            offer.id = currentId
             offerList.add(offer)
+            currentId++
             return offer
         }
 

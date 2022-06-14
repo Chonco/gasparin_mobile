@@ -2,7 +2,6 @@ package com.brunocarlos.inputmanagement.shared
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64

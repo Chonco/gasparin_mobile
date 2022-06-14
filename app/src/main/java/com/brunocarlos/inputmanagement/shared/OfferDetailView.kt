@@ -3,7 +3,6 @@ package com.brunocarlos.inputmanagement.shared
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.util.DisplayMetrics
 import android.view.Gravity
 import android.widget.ImageView
@@ -11,7 +10,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
-import com.brunocarlos.inputmanagement.providers.OfferProvider
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
@@ -50,17 +48,6 @@ class OfferDetailView : AppCompatActivity() {
         val offerDescription = findViewById<TextView>(R.id.offer_details_description)
         offerDescription.text = offer.productDescription
 
-        val acceptOfferBtn = findViewById<Button>(R.id.offer_details_accept_button)
-        val rejectOfferBtn = findViewById<Button>(R.id.offer_details_reject_button)
-
-        acceptOfferBtn.setOnClickListener { acceptOffer() }
-        rejectOfferBtn.setOnClickListener { rejectOffer() }
-
-        if (offer.isAccepted) {
-            val buttonsContainer = findViewById<LinearLayout>(R.id.offer_details_buttons_container)
-            buttonsContainer.visibility = View.GONE
-        }
-
         //LinearLayout
         val foodTypeContainer =
             findViewById<LinearLayout>(R.id.offer_details_food_type_container)
@@ -97,7 +84,7 @@ class OfferDetailView : AppCompatActivity() {
 
             while (true) {
                 //Asignamos el foodtype textview al linearLayout
-                var textView = TextView(this)
+                val textView = TextView(this)
                 val layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
@@ -152,16 +139,5 @@ class OfferDetailView : AppCompatActivity() {
             foodTypesContainer.addView(l)
         }
 
-    }
-
-    private fun acceptOffer() {
-        offer.isAccepted = true
-        OfferProvider.updateOffer(offer.id, offer)
-        finish()
-    }
-
-    private fun rejectOffer() {
-        OfferProvider.deleteOfferById(offer.id)
-        finish()
     }
 }

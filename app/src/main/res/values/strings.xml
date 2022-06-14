@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Input Management</string>
 
+    <string name="profile_menu_option">Profile</string>
+
     <string name="login_email_placeholder">Email</string>
     <string name="login_password_placeholder">Password</string>
     <string name="login_button_text">Login</string>
