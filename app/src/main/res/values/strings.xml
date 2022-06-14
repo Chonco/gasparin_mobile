@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Input Management</string>
+
+    <string name="profile_menu_option">Profile</string>
+
+    <string name="login_email_placeholder">Email</string>
+    <string name="login_password_placeholder">Password</string>
+    <string name="login_button_text">Login</string>
+
+    <string name="available_offers_title">Available Offers</string>
+    <string name="ongoing_offers_title">Ongoing Offers</string>
+    <string name="restaurant_list_title">Restaurant List</string>
+    <string name="offered_offers_title">Offered Offers</string>
+
+    <string name="restaurant_list_ctxt_menu_details">Restaurant Details</string>
+    <string name="restaurant_list_ctxt_menu_offer">Make Offer</string>
+    <string name="restaurant_details_make_offer_button">Offer</string>
+
+    <string name="restaurant_offers_list_ctxt_menu_cancel">Cancel Offer</string>
+
+    <string name="new_offer_title_hint">Offer Title</string>
+    <string name="new_offer_price_hint">Price</string>
+    <string name="new_offer_description_hint">Description</string>
+
+    <string name="offer_list_ctxt_menu_accept_offer">Accept Offer</string>
+    <string name="offer_list_ctxt_menu_reject_offer">Reject Offer</string>
+    <string name="offer_details_description">Product Description</string>
+    <string name="offer_details_seller_banner">Seller:</string>
+    <string name="offer_details_characteristics_banner">Characteristics</string>
 </resources>

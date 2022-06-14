@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/restaurant_details"
+        android:title="@string/restaurant_list_ctxt_menu_details" />
+    <item
+        android:id="@+id/restaurant_make_offer"
+        android:title="@string/restaurant_list_ctxt_menu_offer" />
+</menu>
