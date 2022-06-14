@@ -66,7 +66,6 @@ class OfferAdapter(
             try {
                 val symbols = DecimalFormatSymbols()
                 symbols.decimalSeparator = '.'
-                symbols.groupingSeparator = '\\'
                 val decimalFormat = DecimalFormat("$ #,###.00", symbols)
                 offerPrice.text = decimalFormat.format(offerModel.price)
             } catch (e: Exception) {
