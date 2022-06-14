@@ -1,6 +1,5 @@
 package com.brunocarlos.inputmanagement.shared
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -30,6 +29,7 @@ class MakeOffer : AppCompatActivity() {
     lateinit var imageView: ImageView
     private lateinit var currentPhotoPath: String
     private lateinit var cameraResultReceiver: ActivityResultLauncher<Intent>
+    private lateinit var galleryPickReceiver: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +46,12 @@ class MakeOffer : AppCompatActivity() {
                 }
             }
 
+        galleryPickReceiver = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
+            if (result.resultCode == RESULT_OK && result.data != null) {
+                imageView.setImageURI(result.data!!.data)
+            }
+        }
+
         imageView = findViewById(R.id.new_offer_image)
         imageView.setOnClickListener { showDialogToSelectImageSource() }
     }
@@ -58,10 +64,8 @@ class MakeOffer : AppCompatActivity() {
                     R.string.get_picture_camera_option
                 ) { _, _ -> takePhoto() }
                 setNegativeButton(
-                    R.string.get_picture_gallery_option,
-                    DialogInterface.OnClickListener { dialogInterface, id ->
-
-                    })
+                    R.string.get_picture_gallery_option
+                ) { _, _ -> selectImageFromGallery() }
             }
             builder.setMessage("Select from where you want to get the image.")
             builder.create()
@@ -95,7 +99,6 @@ class MakeOffer : AppCompatActivity() {
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
-        // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
@@ -103,9 +106,17 @@ class MakeOffer : AppCompatActivity() {
             ".jpg", /* suffix */
             storageDir /* directory */
         ).apply {
-            // Save a file: path for use with ACTION_VIEW intents
             currentPhotoPath = absolutePath
         }
+    }
+
+    private fun selectImageFromGallery() {
+        val imageFromGalleryIntent = Intent(
+            Intent.ACTION_PICK,
+            MediaStore.Images.Media.INTERNAL_CONTENT_URI
+        )
+
+        galleryPickReceiver.launch(imageFromGalleryIntent)
     }
 
     private fun makeOffer() {
