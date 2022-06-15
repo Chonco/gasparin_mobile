@@ -43,17 +43,17 @@ class OfferAdapter(
         View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener, OnItemClickListener {
 
         private val offerName: TextView
-        private val producerName: TextView
         private val offerPrice: TextView
         private val offerImg: ImageView
         private val offerTypeContainer: LinearLayout
+        private val status: TextView
 
         init {
             offerName = view.findViewById(R.id.offerName)
-            producerName = view.findViewById(R.id.producerName)
             offerPrice = view.findViewById(R.id.offerPrice)
             offerImg = view.findViewById(R.id.imgOffer)
             offerTypeContainer = view.findViewById(R.id.offer_food_types_container)
+            status = view.findViewById(R.id.offer_status)
 
             if (!offersAccepted) {
                 view.setOnCreateContextMenuListener(this)
@@ -63,7 +63,8 @@ class OfferAdapter(
         fun render(offerModel: Offer) {
             offerImg.setImageBitmap(offerModel.getLogoAsBitmap())
             offerName.text = offerModel.name
-            producerName.text = offerModel.sellerName
+            status.text = offerModel.status.toString()
+
             try {
                 val symbols = DecimalFormatSymbols()
                 symbols.decimalSeparator = '.'
