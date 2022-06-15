@@ -33,6 +33,6 @@
 
     <string name="filter_btn_text">Filter</string>
     <string name="filter_accept_filters">Filter</string>
-    <string name="filter_cancel_filters">Cancel</string>
+    <string name="filter_show_all">Show All</string>
     <string name="restaurant_ongoing_offers_delivered">Delivered</string>
 </resources>

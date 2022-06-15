@@ -90,6 +90,15 @@ class AvailableOffersFragment : Fragment() {
                     )
                 }
             }
+            .setNegativeButton(
+                R.string.filter_show_all
+            ) { _, _ ->
+                customAdapter.setDataFiltered(
+                    OfferProvider.getOffersWithStatus(
+                        listOf()
+                    )
+                )
+            }
         filterAlert.create().show()
     }
 }
