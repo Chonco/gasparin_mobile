@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/checkboxes_container">
+
+    <CheckBox
+        android:id="@+id/offered_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offered" />
+
+    <CheckBox
+        android:id="@+id/rejected_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rejected" />
+
+    <CheckBox
+        android:id="@+id/canceled_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canceled" />
+
+    <CheckBox
+        android:id="@+id/delivered_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delivered" />
+
+</LinearLayout>

@@ -17,6 +17,7 @@ import androidx.core.content.FileProvider
 import androidx.core.view.children
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
+import com.brunocarlos.inputmanagement.models.OfferStatus
 import com.brunocarlos.inputmanagement.providers.OfferProvider
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -156,7 +157,7 @@ class MakeOffer : AppCompatActivity() {
             foodTypesList,
             description,
             getBase64FromImageView(),
-            false
+            OfferStatus.OFFERED
         )
 
         OfferProvider.addOffer(offer)

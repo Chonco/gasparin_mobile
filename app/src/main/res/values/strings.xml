@@ -30,4 +30,8 @@
 
     <string name="get_picture_camera_option">Camera</string>
     <string name="get_picture_gallery_option">Gallery</string>
+
+    <string name="filter_btn_text">Filter</string>
+    <string name="filter_accept_filters">Filter</string>
+    <string name="filter_cancel_filters">Cancel</string>
 </resources>

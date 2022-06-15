@@ -14,7 +14,7 @@ class Offer(
     var foodType: List<String>,
     var productDescription: String,
     var productImg: String,
-    var isAccepted: Boolean
+    var status: OfferStatus
 ) : Serializable {
     fun getLogoAsBitmap(): Bitmap {
         val imageBytes = Base64.decode(productImg, Base64.DEFAULT)

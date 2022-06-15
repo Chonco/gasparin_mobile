@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
+import com.brunocarlos.inputmanagement.models.OfferStatus
 import com.brunocarlos.inputmanagement.models.UserType
 import com.brunocarlos.inputmanagement.providers.OfferProvider
 import com.brunocarlos.inputmanagement.shared.OfferDetailView
@@ -102,7 +103,7 @@ class OfferAdapter(
             val currentOffer = offerList[absoluteAdapterPosition]
             return when (menuItem.itemId) {
                 R.id.accept_Offer -> {
-                    currentOffer.isAccepted = true
+                    currentOffer.status = OfferStatus.ACCEPTED
                     OfferProvider.updateOffer(currentOffer.id, currentOffer)
                     offerList.remove(currentOffer)
                     notifyItemRemoved(absoluteAdapterPosition)
@@ -176,5 +177,11 @@ class OfferAdapter(
     }
 
     override fun getItemCount(): Int = offerList.size
+
+    fun setDataFiltered(offerList: List<Offer>) {
+        this.offerList.clear()
+        this.offerList.addAll(offerList)
+        notifyDataSetChanged()
+    }
 
 }
