@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".seller.SellerOngoingOffersFragment">
+    tools:context=".seller.SellerOngoingOffersFragment"
+    android:paddingBottom="64dp" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/seller_ongoing_offers_recycler_view"
