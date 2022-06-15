@@ -90,7 +90,10 @@ class OfferAdapter(
             val inflater = activity.menuInflater
 
             if (userType == UserType.RESTAURANT)
-                inflater.inflate(R.menu.item_offer_context_menu, contextMenu)
+                if (offersAccepted)
+                    inflater.inflate(R.menu.restaurant_ongoing_offers_ctxt_menu, contextMenu)
+                else
+                    inflater.inflate(R.menu.item_offer_context_menu, contextMenu)
             else
                 inflater.inflate(R.menu.seller_offers_list_context_menu, contextMenu)
 
@@ -110,13 +113,20 @@ class OfferAdapter(
                     true
                 }
                 R.id.reject_Offer -> {
-                    OfferProvider.deleteOfferById(currentOffer.id)
-                    offerList.remove(currentOffer)
-                    notifyItemRemoved(absoluteAdapterPosition)
+                    currentOffer.status = OfferStatus.REJECTED
+                    OfferProvider.updateOffer(currentOffer.id, currentOffer)
+                    notifyItemChanged(absoluteAdapterPosition)
                     true
                 }
                 R.id.cancel_offer -> {
-                    OfferProvider.deleteOfferById(currentOffer.id)
+                    currentOffer.status = OfferStatus.CANCELED
+                    OfferProvider.updateOffer(currentOffer.id, currentOffer)
+                    notifyItemChanged(absoluteAdapterPosition)
+                    true
+                }
+                R.id.delivered_offer -> {
+                    currentOffer.status = OfferStatus.DELIVERED
+                    OfferProvider.updateOffer(currentOffer.id, currentOffer)
                     offerList.remove(currentOffer)
                     notifyItemRemoved(absoluteAdapterPosition)
                     true
