@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
 import com.brunocarlos.inputmanagement.models.OfferStatus
+import com.brunocarlos.inputmanagement.models.User
 import com.brunocarlos.inputmanagement.models.UserType
 import com.brunocarlos.inputmanagement.providers.OfferProvider
 import com.brunocarlos.inputmanagement.shared.OfferDetailView
@@ -55,7 +56,7 @@ class OfferAdapter(
             offerTypeContainer = view.findViewById(R.id.offer_food_types_container)
             status = view.findViewById(R.id.offer_status)
 
-            if (!offersAccepted) {
+            if (!(userType == UserType.SELLER && !offersAccepted)) {
                 view.setOnCreateContextMenuListener(this)
             }
         }
