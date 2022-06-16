@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.brunocarlos.inputmanagement.R
 import com.brunocarlos.inputmanagement.models.Offer
+import com.brunocarlos.inputmanagement.models.OfferStatus
 import com.brunocarlos.inputmanagement.models.UserType
 import com.brunocarlos.inputmanagement.providers.OfferProvider
 import com.brunocarlos.inputmanagement.shared.OfferDetailView
@@ -42,17 +43,17 @@ class OfferAdapter(
         View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener, OnItemClickListener {
 
         private val offerName: TextView
-        private val producerName: TextView
         private val offerPrice: TextView
         private val offerImg: ImageView
         private val offerTypeContainer: LinearLayout
+        private val status: TextView
 
         init {
             offerName = view.findViewById(R.id.offerName)
-            producerName = view.findViewById(R.id.producerName)
             offerPrice = view.findViewById(R.id.offerPrice)
             offerImg = view.findViewById(R.id.imgOffer)
             offerTypeContainer = view.findViewById(R.id.offer_food_types_container)
+            status = view.findViewById(R.id.offer_status)
 
             if (!offersAccepted) {
                 view.setOnCreateContextMenuListener(this)
@@ -62,7 +63,8 @@ class OfferAdapter(
         fun render(offerModel: Offer) {
             offerImg.setImageBitmap(offerModel.getLogoAsBitmap())
             offerName.text = offerModel.name
-            producerName.text = offerModel.sellerName
+            status.text = offerModel.status.toString()
+
             try {
                 val symbols = DecimalFormatSymbols()
                 symbols.decimalSeparator = '.'
@@ -89,7 +91,10 @@ class OfferAdapter(
             val inflater = activity.menuInflater
 
             if (userType == UserType.RESTAURANT)
-                inflater.inflate(R.menu.item_offer_context_menu, contextMenu)
+                if (offersAccepted)
+                    inflater.inflate(R.menu.restaurant_ongoing_offers_ctxt_menu, contextMenu)
+                else
+                    inflater.inflate(R.menu.item_offer_context_menu, contextMenu)
             else
                 inflater.inflate(R.menu.seller_offers_list_context_menu, contextMenu)
 
@@ -102,20 +107,27 @@ class OfferAdapter(
             val currentOffer = offerList[absoluteAdapterPosition]
             return when (menuItem.itemId) {
                 R.id.accept_Offer -> {
-                    currentOffer.isAccepted = true
+                    currentOffer.status = OfferStatus.ACCEPTED
                     OfferProvider.updateOffer(currentOffer.id, currentOffer)
                     offerList.remove(currentOffer)
                     notifyItemRemoved(absoluteAdapterPosition)
                     true
                 }
                 R.id.reject_Offer -> {
-                    OfferProvider.deleteOfferById(currentOffer.id)
-                    offerList.remove(currentOffer)
-                    notifyItemRemoved(absoluteAdapterPosition)
+                    currentOffer.status = OfferStatus.REJECTED
+                    OfferProvider.updateOffer(currentOffer.id, currentOffer)
+                    notifyItemChanged(absoluteAdapterPosition)
                     true
                 }
                 R.id.cancel_offer -> {
-                    OfferProvider.deleteOfferById(currentOffer.id)
+                    currentOffer.status = OfferStatus.CANCELED
+                    OfferProvider.updateOffer(currentOffer.id, currentOffer)
+                    notifyItemChanged(absoluteAdapterPosition)
+                    true
+                }
+                R.id.delivered_offer -> {
+                    currentOffer.status = OfferStatus.DELIVERED
+                    OfferProvider.updateOffer(currentOffer.id, currentOffer)
                     offerList.remove(currentOffer)
                     notifyItemRemoved(absoluteAdapterPosition)
                     true
@@ -133,6 +145,7 @@ class OfferAdapter(
 
     private fun drawFoodTypes(foodTypes: List<String>, foodTypesContainer: LinearLayout) {
         //Creacion de LinearLayout
+        foodTypesContainer.removeAllViews()
         val linearLayout = LinearLayout(activity)
         linearLayout.orientation = LinearLayout.HORIZONTAL
         linearLayout.layoutParams = LinearLayout.LayoutParams(
@@ -176,5 +189,12 @@ class OfferAdapter(
     }
 
     override fun getItemCount(): Int = offerList.size
+
+    fun setDataFiltered(offerList: List<Offer>) {
+        this.offerList.clear()
+        notifyDataSetChanged()
+        this.offerList.addAll(offerList)
+        notifyDataSetChanged()
+    }
 
 }
