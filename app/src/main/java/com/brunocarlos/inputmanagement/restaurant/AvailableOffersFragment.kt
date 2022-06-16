@@ -94,9 +94,7 @@ class AvailableOffersFragment : Fragment() {
                 R.string.filter_show_all
             ) { _, _ ->
                 customAdapter.setDataFiltered(
-                    OfferProvider.getOffersWithStatus(
-                        listOf()
-                    )
+                    OfferProvider.getOngoingOffers()
                 )
             }
         filterAlert.create().show()
