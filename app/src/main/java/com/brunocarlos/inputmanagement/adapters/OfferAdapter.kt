@@ -145,6 +145,7 @@ class OfferAdapter(
 
     private fun drawFoodTypes(foodTypes: List<String>, foodTypesContainer: LinearLayout) {
         //Creacion de LinearLayout
+        foodTypesContainer.removeAllViews()
         val linearLayout = LinearLayout(activity)
         linearLayout.orientation = LinearLayout.HORIZONTAL
         linearLayout.layoutParams = LinearLayout.LayoutParams(
@@ -191,6 +192,7 @@ class OfferAdapter(
 
     fun setDataFiltered(offerList: List<Offer>) {
         this.offerList.clear()
+        notifyDataSetChanged()
         this.offerList.addAll(offerList)
         notifyDataSetChanged()
     }
